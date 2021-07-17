@@ -1,0 +1,32 @@
+<a class="<% if (container.hostname !== null) { %>hover-item<% } %> list-group-item d-flex justify-content-between align-items-center"
+   <% if (container.hostname !== null) { %>href="https://<%= container.hostname %>"
+        <% } %>
+>
+    <div class="ms-2 me-auto d-flex">
+        <kbd class="bg-secondary me-3"><%= container.service %></kbd>
+        <div class="fw-light text-muted"><%= container.status %></div>
+    </div>
+    <span class="badge rounded-pill
+    <% switch (container.state) {
+    case 'created': %>
+        bg-primary
+        <% break;
+    case 'restarting': %>
+        bg-warning
+        <% break;
+    case 'running': %>
+        bg-success
+        <% break;
+    case 'paused': %>
+        bg-secondary
+        <% break;
+    case 'running': %>
+        bg-success
+        <% break;
+    default: %>
+        bg-danger
+        <% break;
+    } %>
+    "><%= container.state %></span>
+</a>
+
